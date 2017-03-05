@@ -1,7 +1,7 @@
 # vipi
 Turn your Raspberry PI 3 into a Wifi VPN Gateway
 
-This Ansible playbook will set up a Raspberry PI 3 as Wifi access point routing all the traffic through a VPN connection.
+This [Ansible playbook](/install/setup.yml) will set up a Raspberry PI 3 as Wifi access point routing all the traffic through a VPN connection.
 As default it sets up four VPN configurations using [ivacy](https://billing.ivacy.com/page/22007), but it should be straightforward
 to change the openvpn configurations to match your VPN provider.
 
