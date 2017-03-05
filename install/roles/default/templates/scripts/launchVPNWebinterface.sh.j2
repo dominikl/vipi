@@ -1,0 +1,4 @@
+#!/bin/bash
+cd /usr/local/vpn_webui
+nodejs webui.js {{ webinterface_port }} &
+disown -a

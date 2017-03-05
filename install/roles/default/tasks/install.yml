@@ -1,0 +1,38 @@
+---
+    # Install necessary packages
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+- name: Install openvpn
+  package:
+    name: openvpn
+    state: latest
+
+- name: Install hostapd
+  package:
+    name: hostapd
+    state: latest
+
+- name: Install dnsmasq
+  package:
+    name: dnsmasq
+    state: latest
+
+- name: Install bind9
+  package:
+    name: bind9
+    state: latest
+
+- name: Install node resources
+  when: webinterface_port is defined
+  shell: curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+  args:
+    executable: /bin/bash
+
+- name: Install node
+  when: webinterface_port is defined
+  package:
+    name: nodejs
+    state: latest

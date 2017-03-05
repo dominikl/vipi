@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>ViPi Control</title>
+        <meta http-equiv="refresh" content="5" >
+    </head>
+    <body>
+        <h2>ViPi Control</h2>
+        <% if (status == 'Reconnecting') { %>
+            <h3>Reconnecting....</h3>
+        <% } %>
+        <% if (status == 'Powering off') { %>
+            <h3>Powering off....</h3>
+        <% } %>
+        <table style="border-spacing: 7px; <%= (status == 'Reconnecting' || status == 'Powering off') ? 'opacity: 0.2;' : '' %>">
+            <tr>
+                <td style="background-color: lightgreen;">Power</td>
+                <td>
+                    <button <%= status == 'Powering off' ? 'disabled' : '' %>
+                        onclick="window.location.href='/shutdown'">Shut down</button>
+                </td>
+            </tr>
+            <tr>
+                <td style='background-color: <%= (vpn1 == 'On') ? 'lightgreen' : 'red' %>;'><%= (vpn1name == null) ? 'VPN 1' : vpn1name %></td>
+                <td>
+                    <button <%= status == 'Powering off' ? 'disabled' : '' %>
+                        onclick="window.location.href='<%= (vpn1 == 'On') ? 'disconnect' : '/connect/1' %>'">
+                        <%= (vpn1 == 'On') ? 'Disconnect' : 'Connect' %>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td style='background-color: <%= vpn2 == 'On' ? 'lightgreen' : 'red' %>;'><%= vpn2name == null ? 'VPN 2' : vpn2name %></td>
+                <td>
+                    <button <%= status == 'Powering off' ? 'disabled' : '' %>
+                        onclick="window.location.href='<%= vpn2 == 'On' ? 'disconnect' : '/connect/2' %>'">
+                        <%= vpn2 == 'On' ? 'Disconnect' : 'Connect' %>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td style='background-color: <%= vpn3 == 'On' ? 'lightgreen' : 'red' %>;'><%= vpn3name == null ? 'VPN 3' : vpn3name %></td>
+                <td>
+                    <button <%= status == 'Powering off' ? 'disabled' : '' %>
+                        onclick="window.location.href='<%= vpn3 == 'On' ? 'disconnect' : '/connect/3' %>'">
+                        <%= vpn3 == 'On' ? 'Disconnect' : 'Connect' %>
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td style='background-color: <%= (vpn4 == 'On') ? 'lightgreen' : 'red' %>;'><%= (vpn4name == null) ? 'VPN 4' : vpn4name %></td>
+                <td>
+                    <button <%= status == 'Powering off' ? 'disabled' : '' %>
+                        onclick="window.location.href='<%= (vpn4 == 'On') ? 'disconnect' : '/connect/4' %>'">
+                        <%= vpn4 == 'On' ? 'Disconnect' : 'Connect' %>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <h2>Active clients (in last hour)</h2>
+        <table cellpadding="10">
+            <tr>
+                <td>IP</td>
+                <td>Last active (sec ago)</td>
+            </tr>
+
+            <% for(var i=0; i<clients.length; i++) { %>
+                <tr>
+                    <td><%= clients[i].ip %> </td>
+                    <td> <%= clients[i].lastSeen  %></td>
+                </tr>
+            <% } %>
+
+        </table>
+    </body>
+</html>

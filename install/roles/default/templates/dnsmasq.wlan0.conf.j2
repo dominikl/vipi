@@ -1,0 +1,8 @@
+interface=wlan0      # Use interface wlan0  
+listen-address={{ wifi_ip_address }} # Explicitly specify the address to listen on  
+bind-interfaces      # Bind to the interface to make sure we aren't sending things elsewhere  
+except-interface=lo
+server={{ wifi_ip_address }} # Use local DNS   
+domain-needed        # Don't forward short names  
+bogus-priv           # Never forward addresses in the non-routed address spaces.  
+dhcp-range=wlan0,{{ wifi_dhcp_start }},{{ wifi_dhcp_end }},{{ wifi_lease }}

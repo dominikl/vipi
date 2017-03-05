@@ -1,0 +1,18 @@
+#!/bin/bash
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A POSTROUTING -o tun0 -j MASQUERADE
+
+iptables -N CLIENTSLOG
+
+iptables -A FORWARD -i tun0 -o wlan0 -d {{ wifi_ip_address }}/24 -m state --state RELATED,ESTABLISHED -j ACCEPT
+{% if cable_ip_address is defined %}
+iptables -A FORWARD -i tun0 -o eth0 -d {{ cable_ip_address }}/24 -m state --state RELATED,ESTABLISHED -j ACCEPT
+{% endif %}
+
+iptables -A CLIENTSLOG -m recent --set --name clients
+iptables -A CLIENTSLOG -m recent --update --rsource --seconds 300 --name clients
+
+iptables -A FORWARD -i wlan0 -o tun0 -s {{ wifi_ip_address }}/24 -j ACCEPT
+{% if cable_ip_address is defined %}
+iptables -A FORWARD -i eth0 -o tun0 -s {{ cable_ip_address }}/24 -j ACCEPT
+{% endif  %}

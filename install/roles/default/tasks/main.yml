@@ -1,0 +1,6 @@
+---
+     # Trigger installation and configuration tasks
+
+- include: install.yml
+- include: configure.yml
+- include: reboot.yml

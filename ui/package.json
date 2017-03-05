@@ -1,0 +1,12 @@
+{
+  "name": "webui",
+  "version": "1.0.0",
+  "description": "ViPi Web UI",
+  "main": "webui.js",
+  "author": "Dominik Lindner",
+  "license": "GPL",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.0"
+  }
+}

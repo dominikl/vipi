@@ -1,0 +1,9 @@
+---
+    
+- name: Install Wifi VPN Gateway
+  hosts: all
+  remote_user: root
+
+  roles:
+    - default
+

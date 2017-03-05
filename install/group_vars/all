@@ -1,0 +1,26 @@
+# Variables needed for the setup
+
+wifi_ssid: vpngateway
+wifi_ip_address: 192.168.20.1
+wifi_network: 192.168.20.0
+wifi_broadcast: 192.168.20.255
+wifi_netmask: 255.255.255.0
+wifi_dhcp_start: 192.168.20.2
+wifi_dhcp_end: 192.168.20.254
+wifi_lease: 24h
+wifi_passphrase: xxxxxxxx
+
+# optional additional cable ip address if you want to use VPN gateway also
+# via network cable connection
+cable_ip_address: 192.168.21.1
+
+# Port for webinterface (optional, webinterface will only be started if port
+# is specified)
+webinterface_port: 3000
+
+# Enables the hardware interface control (optional)
+enable_hw_interface: yes
+
+# VPN credentials
+vpn_username: xxxxxxxx
+vpn_password: xxxxxxxx
