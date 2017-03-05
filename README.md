@@ -16,7 +16,7 @@ It also installs:
 ![ViPi Web Interface](/screenshot.png "ViPi Web Interface")
 
 * A script which enables you to connect a "hardware interface" (breadboard) with
-one power led and button, four leds and buttons to handle the VPN connections.
+one power led and button, four leds and buttons to handle the VPN connections. (optional)
 
 ![ViPi Breadboard](/vipi_bb.png "ViPi Breadboard")
 
